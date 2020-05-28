@@ -1,0 +1,20 @@
+{
+  "name": "zhaw-meme-bot",
+  "version": "1.0.0",
+  "description": "Jellyfin",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npx eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weeb-coders/zhaw-meme-bot.git"
+  },
+  "author": "Austin Albrecht",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0"
+  }
+}
