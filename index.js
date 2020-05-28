@@ -30,6 +30,7 @@ for (const file of triggerFiles) {
 
 client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setPresence({ activity: { name: "for !", type: "WATCHING" } });
 });
 
 client.on("message", message => {
