@@ -1,7 +1,7 @@
 module.exports = {
     name: "detention",
     description: "Leo's favourite command",
-    usage: `${process.env.PREFIX}detention <user>`,
+    get usage() { return `${process.env.PREFIX}${this.name} <user>`; },
     perms: ["MOVE_MEMBERS", "SEND_MESSAGES"],
     execute(message) {
         let member = message.mentions.members.first();
