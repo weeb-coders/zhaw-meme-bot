@@ -13,11 +13,14 @@ module.exports = {
     execute(message) {
         let target = message.mentions.members.first();
         
-        if (target && target.voice.channel && message.member.voice.channel) {
-            target.voice.setChannel(message.member.voice.channel);
+        if (target) {
+            if (target.voice.channel && message.member.voice.channel) {
+                target.voice.setChannel(message.member.voice.channel);
+            }
+            message.channel.send(`**${target} YOU HAVE BEEN SUMMONED BY ${message.member}!**`, { files: [randomEntry(images)], tts: true});
+        } else {
+            message.channel.send("Specify somebody to summon!");
         }
-
-        message.channel.send(`**${target} YOU HAVE BEEN SUMMONED BY ${message.member}!**`, { files: [randomEntry(images)], tts: true});
     }
 };
 
