@@ -81,7 +81,7 @@ function checkPerms(message, perms) {
         }
     }
 
-    if (missingPerms.length > 0 && message.guild.me.permissionsIn(message.channel).has("SEND_MESAGES")) {
+    if (missingPerms.length > 0 && message.guild.me.permissionsIn(message.channel).has("SEND_MESSAGES")) {
         message.channel.send(`Missing the following Permissions: \`\`\`\n${missingPerms.join("\n")}\`\`\``);
     }
     
