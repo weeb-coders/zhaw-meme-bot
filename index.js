@@ -33,7 +33,7 @@ client.once("ready", () => {
     client.user.setPresence({ activity: { name: `for ${process.env.PREFIX}`, type: "WATCHING" } });
 });
 
-client.on("message", message => {
+function handleMessage(message) {
     if (message.author.bot || message.channel.type === "dm") return;
 
     /**
@@ -68,6 +68,18 @@ client.on("message", message => {
         console.error(error);
         message.channel.send("There was an error trying to execute that command!");
     }
+}
+
+client.on("message", handleMessage);
+client.on("messageUpdate", async (_, newMsg) => {
+    let messagesAfter = await newMsg.channel.messages.fetch({
+        limit: 10,
+        after: newMsg.id
+    });
+    let botMessage = messagesAfter.find(msg => msg.author.id === client.user.id);
+    if (botMessage) botMessage.delete();
+
+    handleMessage(newMsg);
 });
 
 client.login(process.env.TOKEN);
